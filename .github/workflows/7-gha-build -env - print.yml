@@ -2,10 +2,12 @@ name: 6-gha-build -env
 on: workflow_dispatch
 
 jobs:
-  show-env-on-windows:
+  show-windows-env:
     runs-on: windows-2022
     steps:
       - name: checkout code
         uses: actions/checkout@v4
       - name: check default env
         run: env
+      - name: print env
+        run: echo $GITHUB_REPOSITORY  
