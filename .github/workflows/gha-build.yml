@@ -1,0 +1,13 @@
+name: pyinstaller show case
+on: workflow_dispatch
+
+job:
+  build-on-windows:
+    runs-on: windows-2022
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: pyinstaller install
+        run: pip-installer
+      - name: build generation
+        run: pyinstaller sha256.py -F
