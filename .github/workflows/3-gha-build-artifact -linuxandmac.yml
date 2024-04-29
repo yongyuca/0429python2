@@ -1,4 +1,4 @@
-name: 2-gha-build-artifact
+name: 3-gha-build-artifact all os
 on: workflow_dispatch
 
 jobs:
