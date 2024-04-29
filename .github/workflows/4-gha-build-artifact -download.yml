@@ -25,7 +25,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: sha256-win-exe
-          path: sha256.exe
       - name: validate sha256.exe file
         run: |
           ls
