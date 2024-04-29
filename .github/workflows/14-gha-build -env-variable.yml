@@ -20,7 +20,7 @@ jobs:
         run: echo "p=${{ env.DB_P }}" 
 
   show-prod-env-variable:
-    environment: DEV
+    environment: PROD
     env:
       DB_U: ${{ vars.DB_USER }}
       DB_P: ${{ secrets.DB_KEY }}
