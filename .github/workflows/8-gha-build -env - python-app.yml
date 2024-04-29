@@ -1,6 +1,7 @@
 name: 8-gha-build -env - python-app
 on: workflow_dispatch
 
+
 jobs:
   show-linux-env:
     runs-on: ubuntu-22.04
@@ -12,4 +13,4 @@ jobs:
       - name: print env
         run: echo $GITHUB_REPOSITORY
       - name:
-        run: python env.py            
+        run: python env.py  

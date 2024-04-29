@@ -1,0 +1,30 @@
+name: 9-gha-build -env - code-level-variable
+on: workflow_dispatch
+
+env:
+  DAY_OF_WEEK: Monday
+
+jobs:
+  show-linux-env:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: check default env
+        run: env
+      - name: print env
+        run: echo $GITHUB_REPOSITORY
+      - name:
+        run: python env.py
+      - name: test show greeting&firstname
+        run:  echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        
+  greeting_job:
+    runs-on: ubuntu-latest
+    env:
+      Greeting: Hello
+    steps:
+      - name: "Say Hello Mona it's Monday"
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mon        
