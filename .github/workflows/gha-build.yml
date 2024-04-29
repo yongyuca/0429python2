@@ -8,6 +8,6 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v4
       - name: pyinstaller install
-        run: pip-installer
+        run: pip installer pyinstaller
       - name: build generation
         run: pyinstaller sha256.py -F
