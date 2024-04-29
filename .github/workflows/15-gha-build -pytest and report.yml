@@ -1,4 +1,4 @@
-name: 14-gha-build -env-variable
+name: 15-gha-build -pytest and report
 on: 
   workflow_dispatch:
     push:
