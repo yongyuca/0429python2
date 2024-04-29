@@ -1,4 +1,4 @@
-name: 6-gha-build -env
+name: 7-gha-build -env - print
 on: workflow_dispatch
 
 jobs:
@@ -10,4 +10,14 @@ jobs:
       - name: check default env
         run: env
       - name: print env
-        run: echo $GITHUB_REPOSITORY  
+        run: echo "$GITHUB_REPOSITORY"  
+
+  show-linux-env:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: check default env
+        run: env
+      - name: print env
+        run: echo $GITHUB_REPOSITORY          
