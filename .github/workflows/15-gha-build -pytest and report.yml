@@ -1,0 +1,31 @@
+name: 14-gha-build -env-variable
+on: 
+  workflow_dispatch:
+    push:
+      branches:
+        - 'main'
+
+jobs:
+  show-pytest-report:
+    environment: DEV
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: install requirements
+        run: pip install -r requirements.txt
+      - name: run py test
+        run: pytest -- cov-repot html:htmlcov --cov-report term --cov=project tests
+      - name: upload test reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-report
+          path: htmlcov/
+
+  deploy:
+      runs-on: ubuntu-22.04
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: deploy code
+        uses: echo "deploy......."        
