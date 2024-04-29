@@ -1,0 +1,86 @@
+name: 5-gha-build-artifact -allosdownload and run
+on: workflow_dispatch
+
+jobs:
+
+  build-on-windows:
+    runs-on: windows-2022
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: install pyinstaller
+        run: pip install pyinstaller
+      - name: build exe
+        run: pyinstaller sha256.py -F
+      - name: upload exe file
+        uses: actions/upload-artifact@v3
+        with:
+          name: sha256-windows-exe
+          path: dist/sha256.exe
+
+  build-on-linux:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: install pyinstaller
+        run: pip install pyinstaller
+      - name: build binary
+        run: pyinstaller sha256.py -F
+      - name: upload binary file
+        uses: actions/upload-artifact@v3
+        with:
+          name: sha256-linux
+          path: dist/sha256
+  build-on-mac:
+    runs-on: macos-12
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: install pyinstaller
+        run: pip3 install pyinstaller
+      - name: build binary
+        run: pyinstaller sha256.py -F
+      - name: upload binary file
+        uses: actions/upload-artifact@v3
+        with:
+          name: sha256-mac
+          path: dist/sha256
+  test-build-windows:
+    runs-on: windows-2022
+    needs: build-on-windows
+    steps:
+      - name: download exe file
+        uses: actions/download-artifact@v3
+        with:
+          name: sha256-windows-exe
+      - name: test exe file
+        run: |
+          ls
+          ./sha256.exe sha256.exe
+  test-build-linux:
+    runs-on: ubuntu-22.04
+    needs: build-on-linux
+    steps:
+      - name: download binary file
+        uses: actions/download-artifact@v3
+        with:
+          name: sha256-linux
+      - name: test binary file
+        run: |
+          ls
+          chmod +x sha256
+          ./sha256 sha256
+  test-build-mac:
+    runs-on: macos-12
+    needs: build-on-mac
+    steps:
+      - name: download binary file
+        uses: actions/download-artifact@v3
+        with:
+          name: sha256-mac
+      - name: test binary file
+        run: |
+          ls
+          chmod +x sha256
+          ./sha256 sha256
