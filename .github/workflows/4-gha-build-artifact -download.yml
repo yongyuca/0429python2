@@ -28,6 +28,6 @@ jobs:
            path: sha256.exe
       - name: validate sha256.exe file
         run: |
-           ls
-           ./sha256.exe sha256.exe          
+          ls
+          ./sha256.exe sha256.exe        
           
