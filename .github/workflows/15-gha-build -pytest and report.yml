@@ -7,7 +7,6 @@ on:
 
 jobs:
   show-pytest-report:
-    environment: DEV
     runs-on: ubuntu-22.04
     steps:
       - name: checkout code
