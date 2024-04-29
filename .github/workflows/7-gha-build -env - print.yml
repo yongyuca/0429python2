@@ -10,11 +10,7 @@ jobs:
       - name: check default env
         run: env
       - name: print env
-        run: |
-          echo "release" >> $GITHUB_ENV
-          echo "demo" >> $GITHUB_OUTPUT
-          echo ${{GITHUB_ENV}}
-          echo $GITHUB_OUTPUT
+        run: echo "version=${GITHUB_REF##*/}" 
 
   show-linux-env:
     runs-on: ubuntu-22.04
