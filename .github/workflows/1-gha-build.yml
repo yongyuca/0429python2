@@ -1,4 +1,4 @@
-name: pyinstaller show case
+name: 1-pyinstaller show case-pyinsaller install
 on: workflow_dispatch
 
 jobs:
