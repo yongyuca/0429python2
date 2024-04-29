@@ -1,7 +1,7 @@
 name: pyinstaller show case
 on: workflow_dispatch
 
-job:
+jobs:
   build-on-windows:
     runs-on: windows-2022
     steps:
